@@ -12,7 +12,9 @@ declare(strict_types=1);
 
 namespace Phalcon\DevTools;
 
-use Phalcon\Version as PhVersion;
+//use Phalcon\Version as PhVersion;
+use Phalcon\Support\Version as PhVersion;
+
 
 /**
  * This class allows to get the installed version of the Developer Tools
@@ -27,7 +29,8 @@ class Version extends PhVersion
     // phpcs:disable
     protected static function _getVersion(): array
     {
-        return [4, 1, 0, 0, 0];
+	    //return [4, 1, 0, 0, 0];
+	    return $this->getVersion();
     }
     // phpcs:enable
 }
