@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Phalcon\DevTools\Web\Tools\Controllers;
 
 use DirectoryIterator;
-use PDOException;
+// use \PDOException;
 use Phalcon\DevTools\Builder\Component\AllModels;
 use Phalcon\DevTools\Builder\Component\Model;
 use Phalcon\DevTools\Builder\Exception\BuilderException;
@@ -24,7 +24,7 @@ use Phalcon\Http\ResponseInterface;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\DispatcherInterface;
 use Phalcon\Tag;
-use Phalcon\Text;
+use Phalcon\Support\HelperFactory;
 
 /**
  * @property Dispatcher|DispatcherInterface $dispatcher
@@ -225,9 +225,11 @@ class ModelsController extends Base
 
                     $message = 'Models were created successfully.';
                 } else {
+                    $helper = new HelperFactory();
+
                     $message = sprintf(
                         'Model "%s" was created successfully',
-                        Text::camelize(basename($tableName, '.php'))
+                        $helper->camelize(basename($tableName, '.php'))
                     );
                 }
 
@@ -253,7 +255,7 @@ class ModelsController extends Base
 
         try {
             $tables = $this->dbUtils->listTables(true);
-        } catch (PDOException $PDOException) {
+        } catch (\PDOException $PDOException) {
             $tables = [];
             $this->flashSession->error($PDOException->getMessage());
         }

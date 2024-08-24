@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Phalcon\DevTools\Utils;
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 use Phalcon\Di\Injectable;
 
 /**
@@ -61,6 +61,18 @@ class DbUtils extends Injectable
         }
 
         if ('Postgresql' === $config->get('adapter')) {
+            // if ($this->getDI()->has('db')) {
+            //     $connection = $this->getDI()->getShared('db');
+            //     $sql = 'SELECT schema_name FROM information_schema.schemata';
+            //     $result = $connection->query($sql);
+            
+            //     $data = array();
+            //     while ($item = $result->fetch()) {
+            //         $data += [$item['schema_name'] => $item['schema_name']];
+            //     }
+            // }
+            
+             
             return 'public';
         }
 

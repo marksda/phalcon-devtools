@@ -22,7 +22,7 @@ use Phalcon\Http\ResponseInterface;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\DispatcherInterface;
 use Phalcon\Tag;
-use Phalcon\Text;
+use Phalcon\Support\HelperFactory;
 
 /**
  * @property Dispatcher|DispatcherInterface $dispatcher
@@ -46,6 +46,8 @@ class ScaffoldController extends Base
      */
     public function generateAction()
     {
+        $helper = new HelperFactory();
+
         if ($this->request->isPost()) {
             try {
                 $tableName = $this->request->getPost('tableName', 'string');
@@ -64,7 +66,7 @@ class ScaffoldController extends Base
                 $scaffoldBuilder->build();
 
                 $this->flashSession->success(
-                    sprintf('Scaffold for table "%s" was generated successfully', Text::camelize($tableName))
+                    sprintf('Scaffold for table "%s" was generated successfully', $helper->camelize($tableName))
                 );
 
                 return $this->response->redirect('/webtools.php/migrations/list');

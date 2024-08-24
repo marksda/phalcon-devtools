@@ -15,6 +15,10 @@ namespace Phalcon\DevTools\Providers;
 use Phalcon\Assets\Manager as AssetsManager;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\TagFactory;
+
+
 
 class AssetsProvider implements ServiceProviderInterface
 {
@@ -31,7 +35,9 @@ class AssetsProvider implements ServiceProviderInterface
     public function register(DiInterface $di): void
     {
         $di->setShared($this->providerName, function () {
-            return new AssetsManager();
+            $escaper = new Escaper();
+            $tagFactory = new TagFactory($escaper);
+            return new AssetsManager($tagFactory);
         });
     }
 }

@@ -37,12 +37,11 @@ use Phalcon\DevTools\Providers\UrlProvider;
 use Phalcon\DevTools\Providers\ViewCacheProvider;
 use Phalcon\DevTools\Providers\ViewProvider;
 use Phalcon\DevTools\Providers\VoltProvider;
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Mvc\Application as MvcApplication;
-// use Phalcon\Text;
 use Phalcon\Support\HelperFactory;
 
 
@@ -180,8 +179,8 @@ class Bootstrap
         $this->initFromConstants();
         $this->setParameters($parameters);
 
-        $this->di = new FactoryDefault;
-        $this->app = new MvcApplication;
+        $this->di = new FactoryDefault();
+        $this->app = new MvcApplication();
         $this->di->setShared('application', $this);
 
         (new ErrorHandler)->register();

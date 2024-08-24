@@ -15,14 +15,14 @@
                     <div class="form-group">
                         <label for="namespace" class="col-sm-2 control-label">Namespace</label>
                         <div class="col-sm-10">
-                            {{ input("namespace", 'eg. My\Awesome\Namespace') }}
+                            {{ text_field("namespace", 'eg. My\Awesome\Namespace') }}
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="schema" class="col-sm-2 control-label">Schema</label>
                         <div class="col-sm-10">
-                            {{ input("schema", "Database name") }}
+                            {{ text_field("schema", "Database name") }}
                         </div>
                     </div>
 
@@ -36,14 +36,14 @@
                     <div class="form-group">
                         <label for="basePath" class="col-sm-2 control-label">Project Root</label>
                         <div class="col-sm-10">
-                            {{ input("basePath", "The absolute path to the project") }}
+                            {{ text_field("basePath", "The absolute path to the project") }}
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="modelsDir" class="col-sm-2 control-label">Model Directory</label>
                         <div class="col-sm-10">
-                            {{ input("modelsDir", "The absolute path to the model directory") }}
+                            {{ text_field("modelsDir", "The absolute path to the model directory") }}
                         </div>
                     </div>
 

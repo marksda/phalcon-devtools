@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-use Phalcon\Escaper;
+use Phalcon\Html\Escaper;
 use Phalcon\Flash\Direct as Flash;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\Router;
 use Phalcon\Session\Adapter\Stream as SessionAdapter;
 use Phalcon\Session\Manager as SessionManager;
-use Phalcon\Url as UrlResolver;
+use Phalcon\Mvc\Url as UrlResolver;
 
 /**
  * Registering a router
@@ -49,6 +49,7 @@ $di->setShared('session', function () {
  * Register the session flash service with the Twitter Bootstrap classes
  */
 $di->set('flash', function () {
+
     $escaper = new Escaper();
     $flash = new Flash($escaper);
     $flash->setImplicitFlush(false);

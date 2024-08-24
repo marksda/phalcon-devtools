@@ -57,7 +57,7 @@ class DatabaseProvider implements ServiceProviderInterface
                 'username' => $config['username'],
                 'password' => $config['password'],
                 'dbname'   => $config['dbname'],
-                'charset'  => $config['charset'],
+                // 'charset'  => $config['charset'],
                 'port'     => $config['port'],
             ];
 
